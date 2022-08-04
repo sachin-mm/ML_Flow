@@ -12,6 +12,9 @@ from urllib.parse import urlparse
 import mlflow
 import mlflow.sklearn
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
+import os
+os.environ["GIT_PYTHON_REFRESH"] = "quiet"
+import git
 
 import logging
 
