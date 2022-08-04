@@ -8,8 +8,6 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import ElasticNet
 from sklearn.tree import DecisionTreeClassifier
-from sklearn import preprocessing
-from sklearn import utils
 from urllib.parse import urlparse
 import mlflow
 import mlflow.sklearn
@@ -42,18 +40,16 @@ if __name__ == "__main__":
         )
     X_train, X_test, y_train, y_test = train_test_split(data, df_target, random_state = 10, test_size = 0.2)
 
+  
     max_leaf_nodes =int(sys.argv[1])
     with mlflow.start_run():
-        #lab = preprocessing.LabelEncoder()
-        #y_train = lab.fit_transform(y_train)
-        #y_test = lab.fit_transform(y_test)
-        decision_tree_classification = DecisionTreeClassifier(criterion='entropy',max_leaf_nodes = max_leaf_nodes , random_state = 10)
+        decision_tree_classification = DecisionTreeClassifier(criterion='entropy',max_leaf_nodes =max_leaf_nodes, random_state = 10)
         decision_tree1 = decision_tree_classification.fit(X_train, y_train)
         y_pred=decision_tree1.predict(X_test)
 
         (precision,recall,f1,accuracy) = eval_metrics(y_test,y_pred)
 
-        
+
         print("  precision: %s" % precision)
         print("  recall: %s" % recall)
         print("  f1: %s" % f1)
