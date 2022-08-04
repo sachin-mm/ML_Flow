@@ -31,6 +31,7 @@ def eval_metrics(actual, pred):
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     np.random.seed(40)
+    mlflow.set_tracking_uri("sqlite:///mlruns.db")
 
     # Read the wine-quality csv file from the URL
 
