@@ -20,6 +20,7 @@ import logging
 
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
+request_uri="http://127.0.0.1:5000/invocations"
 
 def eval_metrics(actual, pred):
     precision = precision_score(actual, pred)
