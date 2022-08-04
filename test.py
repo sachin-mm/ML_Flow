@@ -34,20 +34,20 @@ if __name__ == "__main__":
     # Read the wine-quality csv file from the URL
 
     try:
-        data = pd.read_csv(r"C:\Users\sachi\OneDrive\Documents\Reflections Infos\Project\ML_Flow\final_df.csv")
-        df_target = pd.read_csv(r"C:\Users\sachi\OneDrive\Documents\Reflections Infos\Project\ML_Flow\final_df.csv")
+        data = pd.read_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "final_df.csv"))
+        df_target = pd.read_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "target.csv"))
     except Exception as e:
         logger.exception(
             "Unable to download training & test CSV, check your internet connection. Error: %s", e
         )
     X_train, X_test, y_train, y_test = train_test_split(data, df_target, random_state = 10, test_size = 0.2)
 
-    nodes = 10
+    max_leaf_nodes =int(sys.argv[1])
     with mlflow.start_run():
         #lab = preprocessing.LabelEncoder()
         #y_train = lab.fit_transform(y_train)
         #y_test = lab.fit_transform(y_test)
-        decision_tree_classification = DecisionTreeClassifier(criterion='entropy',max_leaf_nodes =nodes , random_state = 10)
+        decision_tree_classification = DecisionTreeClassifier(criterion='entropy',max_leaf_nodes = max_leaf_nodes , random_state = 10)
         decision_tree1 = decision_tree_classification.fit(X_train, y_train)
         y_pred=decision_tree1.predict(X_test)
 
