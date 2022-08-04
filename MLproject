@@ -1,0 +1,9 @@
+name: tutorial
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      max_leaf_nodes: int
+    command: "python test.py {max_leaf_nodes}"
