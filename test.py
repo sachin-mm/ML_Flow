@@ -59,7 +59,7 @@ if __name__ == "__main__":
         print("  f1: %s" % f1)
         print(" accuracy:%s"% accuracy)
 
-        mlflow.log_param("max_leaf_nodes", nodes)
+        mlflow.log_param("max_leaf_nodes", max_leaf_nodes)
         mlflow.log_metric("precision", precision)
         mlflow.log_metric("recall", recall)
         mlflow.log_metric("f1", f1)
