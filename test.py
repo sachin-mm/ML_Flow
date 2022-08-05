@@ -20,7 +20,7 @@ import logging
 
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
-request_uri="http://127.0.0.1:5000/invocations"
+#request_uri="http://127.0.0.1:5000/invocations"
 
 def eval_metrics(actual, pred):
     precision = precision_score(actual, pred)
@@ -32,9 +32,8 @@ def eval_metrics(actual, pred):
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     np.random.seed(40)
-    mlflow.set_tracking_uri("sqlite:///mlruns.db")
+   # mlflow.set_tracking_uri("sqlite:///mlruns.db")
 
-    # Read the wine-quality csv file from the URL
 
     try:
         data = pd.read_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "final_df.csv"))
